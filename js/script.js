@@ -1,21 +1,4 @@
-/******************************************
-Treehouse Techdegree:
-FSJS project 1 - A Random Quote Generator
-******************************************/
-
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/***
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended:
-    - Add at least one `year` and/or `citation` property to at least one
-      quote object.
-***/
-let quotes = [
+const quotes = [
   {
     quote: `While breathing in long, one knows: "I breathe in long". While breathing out long, one knows "I breathe out long."`,
     source: "Gautama Buddha",
@@ -41,42 +24,23 @@ let quotes = [
     source: "Gautama Buddha",
     citation: "anapanasati sutta"
   }
-];
+]; //array of quote objects
 
-
-
-/***
-  Create the `getRandomQuote` function to:
-   - generate a random number
-   - use the random number to `return` a random quote object from the
-     `quotes` array.
-***/
-function getRandomQuote(quotes){
-  let randomIndex = Math.floor(Math.random() * quotes.length);
-  return quotes[randomIndex];
+function getRandomQuote(){
+  const randomIndex = Math.floor(Math.random() * quotes.length); //random index
+  return quotes[randomIndex]; //returns quote at random index
 }
 
-
-
-/***
-  Create the `printQuote` function to:
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string.
-***/
-
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener
-  below will be triggered, and it will call, or "invoke", the `printQuote`
-  function. So do not make any changes to the line of code below this
-  comment.
-***/
+function printQuote () {
+  const quoteObj = getRandomQuote(); //random quote object
+  let htmlString = `<p class="quote">${quoteObj.quote}</p><p class="source">${quoteObj.source}`; //html string with quote and source
+  for (key in quoteObj) {
+    if (key !== "quote" && key !== "source"){
+      htmlString += `<span class="${key}">${quoteObj[key]}</span>`;
+    } //filter out quote and source properties
+  } //add on spans for additional attribution elements
+  document.getElementById('quote-box').innerHTML = htmlString+='</p>'; //set quote-box to html string
+}
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
