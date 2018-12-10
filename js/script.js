@@ -51,7 +51,10 @@ let quotes = [
    - use the random number to `return` a random quote object from the
      `quotes` array.
 ***/
-
+function getRandomQuote(quotes){
+  let randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
 
 
 
