@@ -62,3 +62,5 @@ function randomRGB (){
 function randomRGBValue () {
   return Math.floor(Math.random() * 255);
 } //generate random rgb value
+
+window.setInterval(printQuote, 30000); //auto refresh the quote every 30 seconds
