@@ -49,5 +49,16 @@ function printQuote () {
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+document.getElementById('loadQuote').addEventListener("click", randomBackgroundColor, false); //change background color on quote load
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+function randomBackgroundColor() {
+  document.body.style.backgroundColor = randomRGB();
+} //set body background to random rgb value
+
+function randomRGB (){
+  return `rgb(${randomRGBValue()}, ${randomRGBValue()}, ${randomRGBValue()})`;
+}//generate random rgb
+
+function randomRGBValue () {
+  return Math.floor(Math.random() * 255);
+} //generate random rgb value
